@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anuj Malakar — ML Engineer &amp; Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Anuj Malakar — ML Engineer and Full-Stack Developer specializing in applied computer vision, mobile apps, and backend systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12160E;
+    --surface: #1B2115;
+    --surface-2: #232B1C;
+    --line: #333D28;
+    --text: #ECEEE1;
+    --text-muted: #9AA48C;
+    --leaf: #86C25A;
+    --leaf-dim: #4E7A38;
+    --wheat: #D9A441;
+    --radius: 10px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    margin: 0 0 .4em 0;
+    letter-spacing: -0.01em;
+  }
+  .mono{ font-family: 'IBM Plex Mono', monospace; }
+  a{ color: var(--leaf); }
+  .wrap{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position: sticky; top:0; z-index: 20;
+    background: rgba(18,22,14,0.86);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    max-width: 920px; margin:0 auto; padding: 16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-name{ font-family:'Fraunces', serif; font-size:1.05rem; color:var(--text); text-decoration:none; }
+  .nav-links{ display:flex; gap:22px; list-style:none; margin:0; padding:0; }
+  .nav-links a{
+    color: var(--text-muted); text-decoration:none; font-size:.9rem;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .nav-links a:hover{ color: var(--leaf); }
+  .nav-toggle{ display:none; background:none; border:1px solid var(--line); color:var(--text); padding:6px 10px; border-radius:6px; font-family:'IBM Plex Mono',monospace; }
+
+  @media (max-width: 640px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:inline-block; }
+    .nav-links.open{
+      display:flex; flex-direction:column; position:absolute; top:56px; right:24px;
+      background: var(--surface); border:1px solid var(--line); border-radius: var(--radius);
+      padding: 14px 20px; gap:14px;
+    }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding: 76px 0 56px;
+    display:grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items:center;
+  }
+  @media (max-width: 760px){ .hero{ grid-template-columns: 1fr; padding-top:48px; } }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; color: var(--leaf);
+    font-size:.8rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .hero h1{ font-size: clamp(2.1rem, 5vw, 3.1rem); color:var(--text); }
+  .hero .role{ color: var(--text-muted); font-size:1.05rem; margin-bottom: 18px; }
+  .hero p.summary{ color: var(--text); opacity:.9; max-width: 46ch; }
+
+  .profile-photo{
+    width: 84px; height: 84px; border-radius: 50%;
+    object-fit: cover; border: 2px solid var(--leaf);
+    margin-bottom: 18px; display: block;
+  }
+  .profile-fallback{
+    width: 84px; height: 84px; border-radius: 50%;
+    border: 2px dashed var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; color: var(--text-muted); font-size:.7rem;
+    margin-bottom: 18px; text-align:center; line-height:1.3; padding: 6px;
+  }
+  .profile-wrap{ position: relative; width: 84px; height: 84px; margin-bottom: 18px; }
+  .profile-wrap .profile-photo,
+  .profile-wrap .profile-fallback{ margin-bottom: 0; }
+  .photo-upload-btn{
+    position:absolute; bottom:-2px; right:-2px;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--surface); border: 1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; font-size:.75rem;
+  }
+  .photo-upload-btn:hover{ border-color: var(--leaf); }
+  .photo-upload-btn input{ display:none; }
+  .cta-row{ display:flex; flex-wrap:wrap; gap: 12px; margin-top: 26px; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:.85rem;
+    padding: 10px 16px; border-radius: 8px; text-decoration:none;
+    border: 1px solid var(--line);
+  }
+  .btn.primary{ background: var(--leaf); color:#10150B; border-color: var(--leaf); font-weight:600; }
+  .btn.primary:hover{ background:#98d16d; }
+  .btn.ghost{ color: var(--text); }
+  .btn.ghost:hover{ border-color: var(--leaf); color: var(--leaf); }
+
+  /* ---------- Signature scan visual ---------- */
+  .scan-card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .scan-card svg{ width:100%; height:auto; display:block; }
+  .scan-readout{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top: 12px; font-family:'IBM Plex Mono', monospace; font-size:.72rem; color: var(--text-muted);
+  }
+  .scan-readout .dot{
+    width:7px; height:7px; border-radius:50%; background: var(--leaf); display:inline-block; margin-right:6px;
+    box-shadow: 0 0 6px var(--leaf);
+  }
+  .scanline{
+    animation: sweep 3.2s ease-in-out infinite;
+  }
+  @keyframes sweep{
+    0%   { transform: translateY(0);   opacity:.15; }
+    8%   { opacity:1; }
+    48%  { transform: translateY(150px); opacity:1; }
+    56%  { opacity:.15; }
+    100% { transform: translateY(0);   opacity:.15; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .scanline{ animation: none; opacity:.6; }
+  }
+
+  /* ---------- Sections ---------- */
+  section{ padding: 54px 0; border-top: 1px solid var(--line); }
+  .section-head{ display:flex; align-items:baseline; gap:12px; margin-bottom: 26px; }
+  .section-head .tag{ font-family:'IBM Plex Mono', monospace; color: var(--wheat); font-size:.78rem; }
+  .section-head h2{ font-size: 1.5rem; color: var(--text); }
+
+  /* About */
+  .about p{ max-width: 68ch; color: var(--text); opacity:.92; }
+
+  /* Experience */
+  .exp-card{
+    background: var(--surface); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 22px 24px;
+  }
+  .exp-head{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:6px; }
+  .exp-role{ font-weight:600; color:var(--text); }
+  .exp-org{ color: var(--leaf); }
+  .exp-date{ font-family:'IBM Plex Mono', monospace; color: var(--text-muted); font-size:.82rem; }
+  .exp-card ul{ margin: 12px 0 0 0; padding-left: 20px; color: var(--text); opacity:.92; }
+  .exp-card li{ margin-bottom: 8px; }
+
+  /* Projects */
+  .projects-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 760px){ .projects-grid{ grid-template-columns: 1fr; } }
+  .project-card{
+    background: var(--surface); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 20px; display:flex; flex-direction:column;
+  }
+  .project-card h3{ font-size: 1.05rem; color: var(--text); margin-bottom: 6px; }
+  .project-stack{
+    font-family:'IBM Plex Mono', monospace; font-size:.72rem; color: var(--wheat);
+    margin-bottom: 10px;
+  }
+  .project-card p{ color: var(--text-muted); font-size:.92rem; flex-grow:1; }
+
+  /* Skills */
+  .skills-groups{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  @media (max-width:640px){ .skills-groups{ grid-template-columns: 1fr; } }
+  .skill-group .label{
+    font-family:'IBM Plex Mono', monospace; color: var(--text-muted); font-size:.75rem;
+    text-transform: uppercase; letter-spacing:.08em; margin-bottom: 10px;
+  }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    border:1px solid var(--line); color: var(--text); background: var(--surface-2);
+    padding: 6px 12px; border-radius: 999px; font-size:.82rem;
+  }
+
+  /* Education */
+  .edu-row{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .edu-row:last-child{ border-bottom:none; }
+  .edu-school{ color: var(--text); }
+  .edu-degree{ color: var(--text-muted); font-size:.9rem; }
+  .edu-score{ font-family:'IBM Plex Mono', monospace; color: var(--leaf); font-size:.85rem; }
+
+  /* Contact / Footer */
+  footer{ padding: 60px 0 40px; text-align:center; }
+  footer h2{ font-size: 1.7rem; }
+  footer p{ color: var(--text-muted); margin-bottom: 24px; }
+  .footer-links{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+  .foot-note{ margin-top: 40px; color: var(--text-muted); font-size:.78rem; font-family:'IBM Plex Mono', monospace; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-name">Anuj Malakar</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="wrap" id="top">
+
+  <section class="hero" style="border-top:none;">
+    <div>
+      <div class="profile-wrap">
+        <img id="profileImg" class="profile-photo" src="profile.jpg" alt="Anuj Malakar"
+             style="display:none"
+             onload="this.style.display='block'; document.getElementById('profileFallback').style.display='none';"
+             onerror="this.style.display='none'; document.getElementById('profileFallback').style.display='flex';">
+        <div id="profileFallback" class="profile-fallback">AM<br>photo</div>
+        <label class="photo-upload-btn" title="Preview a profile photo (local only)">
+          📷
+          <input type="file" id="photoInput" accept="image/*">
+        </label>
+      </div>
+      <div class="eyebrow">ML Engineer · Full-Stack Developer · Research Software Engineer</div>
+      <div class="mono" style="display:inline-block; font-size:.72rem; color:var(--bg); background:var(--leaf); padding:4px 10px; border-radius:999px; margin-bottom:14px; font-weight:600;">● Immediate Joiner</div>
+      <h1>Anuj Malakar</h1>
+      <div class="role">Building end-to-end AI systems — from model to mobile to API</div>
+      <p class="summary">Recently completed a tenure as Project Fellow at NIT Raipur, where I built and shipped Smart AgroGuard: a government-funded precision agriculture platform combining real-time crop disease detection with a Flutter app and FastAPI backend. <strong style="color:var(--leaf)">Immediately available to join</strong> — open to roles in AI/ML engineering, Flutter development, backend systems, and applied research.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:malakaranuj202@gmail.com">Email me</a>
+        <a class="btn ghost" href="https://github.com/anujmalakar" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="https://linkedin.com/in/anujmalakar" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="scan-card">
+      <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="leafClip">
+            <path d="M130 12 C60 20 30 90 40 150 C48 196 90 210 130 210 C170 210 212 196 220 150 C230 90 200 20 130 12 Z"/>
+          </clipPath>
+        </defs>
+        <path d="M130 12 C60 20 30 90 40 150 C48 196 90 210 130 210 C170 210 212 196 220 150 C230 90 200 20 130 12 Z"
+              fill="none" stroke="#4E7A38" stroke-width="2"/>
+        <path d="M130 20 L130 205" stroke="#4E7A38" stroke-width="1.5" opacity=".6" clip-path="url(#leafClip)"/>
+        <g clip-path="url(#leafClip)">
+          <g opacity=".5" stroke="#333D28" stroke-width="1">
+            <line x1="20" y1="45" x2="240" y2="45"/>
+            <line x1="20" y1="75" x2="240" y2="75"/>
+            <line x1="20" y1="105" x2="240" y2="105"/>
+            <line x1="20" y1="135" x2="240" y2="135"/>
+            <line x1="20" y1="165" x2="240" y2="165"/>
+            <line x1="20" y1="195" x2="240" y2="195"/>
+          </g>
+          <rect x="150" y="70" width="34" height="34" fill="#86C25A" opacity=".35"/>
+          <rect x="90" y="130" width="26" height="26" fill="#D9A441" opacity=".3"/>
+          <rect class="scanline" x="10" y="18" width="240" height="6" fill="#86C25A" opacity=".7"/>
+        </g>
+      </svg>
+      <div class="scan-readout">
+        <span><span class="dot"></span>class: leaf_blight</span>
+        <span>confidence 97.4%</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head">
+      <span class="tag">01</span>
+      <h2>About</h2>
+    </div>
+    <div class="about">
+      <p>I'm an ML engineer and full-stack developer with hands-on production experience shipping end-to-end AI systems — not just notebooks. My recent work spans the complete lifecycle: preprocessing field-collected image data, training CNN and MobileNet-based classifiers, and deploying them behind FastAPI services consumed by a Flutter mobile app used by real farming communities. I like owning a system across layers: model, backend, and frontend. I've recently wrapped up my fellowship at NIT Raipur and am immediately available to join a new team.</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <span class="tag">02</span>
+      <h2>Experience</h2>
+    </div>
+    <div class="exp-card">
+      <div class="exp-head">
+        <div><span class="exp-role">Project Fellow</span> · <span class="exp-org">National Institute of Technology, Raipur</span></div>
+        <div class="exp-date">Aug 2025 – Feb 2026 · Completed</div>
+      </div>
+      <div class="exp-date" style="margin-bottom:4px;">Smart AgroGuard — Government-funded precision agriculture system</div>
+      <ul>
+        <li>Built a cross-platform Flutter mobile application used for real-time crop monitoring by farming communities.</li>
+        <li>Designed RESTful APIs with FastAPI to serve inference results, handling image upload, preprocessing, and prediction pipelines end-to-end.</li>
+        <li>Trained and integrated deep learning models (TensorFlow/Keras) for plant disease classification, achieving production-ready accuracy on field-collected image datasets.</li>
+        <li>Architected the full system stack — mobile frontend, ML inference backend, and data handling — as the primary engineer on the project.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <span class="tag">03</span>
+      <h2>Projects</h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Smart AgroGuard</h3>
+        <div class="project-stack">Flutter · FastAPI · MobileNet</div>
+        <p>Complete precision agriculture platform — farmers photograph crops and receive instant disease diagnosis and treatment recommendations via a MobileNet-based model served through a FastAPI backend.</p>
+      </div>
+      <div class="project-card">
+        <h3>Image-Based Plant Disease Detection</h3>
+        <div class="project-stack">TensorFlow · Keras · CNN · OpenCV</div>
+        <p>CNN classifier for multi-class plant disease detection. Applied OpenCV preprocessing (resizing, augmentation, normalisation) to improve generalisation; achieved high validation accuracy and served as the inference core for Smart AgroGuard.</p>
+      </div>
+      <div class="project-card">
+        <h3>Smart Fertilizer Management System</h3>
+        <div class="project-stack">Flask · Python · SQLite · OOP</div>
+        <p>Full-stack web app for fertilizer inventory tracking and AI-based recommendation, serving admin, farmer, and dealer roles with role-based auth, session management, and a real-time analytics dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <span class="tag">04</span>
+      <h2>Skills</h2>
+    </div>
+    <div class="skills-groups">
+      <div class="skill-group">
+        <div class="label">Primary</div>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">Dart</span><span class="chip">FastAPI</span>
+          <span class="chip">Flutter</span><span class="chip">TensorFlow</span><span class="chip">Keras</span>
+          <span class="chip">OpenCV</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="label">Secondary</div>
+        <div class="chips">
+          <span class="chip">C++</span><span class="chip">Flask</span><span class="chip">SQL</span>
+          <span class="chip">HTML</span><span class="chip">CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="label">ML / AI</div>
+        <div class="chips">
+          <span class="chip">CNNs</span><span class="chip">NLP</span><span class="chip">Web Scraping</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="label">Tools</div>
+        <div class="chips">
+          <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Google Colab</span>
+          <span class="chip">Jupyter Notebook</span><span class="chip">VS Code</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head">
+      <span class="tag">05</span>
+      <h2>Education &amp; Certifications</h2>
+    </div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-school">Bhilai Institute of Technology, Durg</div>
+        <div class="edu-degree">B.Tech — Information Technology · 2021 – 2025</div>
+      </div>
+      <div class="edu-score">69%</div>
+    </div>
+    <div class="edu-row">
+      <div class="edu-school">Class XII · CGBSE</div>
+      <div class="edu-score">93%</div>
+    </div>
+    <div class="edu-row">
+      <div class="edu-school">Class X · CBSE</div>
+      <div class="edu-score">86.5%</div>
+    </div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-school">Machine Learning using Python</div>
+        <div class="edu-degree">Start-Tech Academy · NumPy, Pandas, Scikit-learn, Matplotlib</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2>Let's build something</h2>
+    <p>Immediately available to join — open to AI/ML engineering, Flutter, and backend roles.</p>
+    <div class="footer-links">
+      <a class="btn primary" href="mailto:malakaranuj202@gmail.com">malakaranuj202@gmail.com</a>
+      <a class="btn ghost" href="tel:+917828626519">+91-7828626519</a>
+      <a class="btn ghost" href="https://github.com/anujmalakar" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn ghost" href="https://linkedin.com/in/anujmalakar" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="foot-note">© <span id="year"></span> Anuj Malakar</div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const photoInput = document.getElementById('photoInput');
+  const profileImg = document.getElementById('profileImg');
+  const profileFallback = document.getElementById('profileFallback');
+  photoInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      profileImg.src = ev.target.result;
+      profileImg.style.display = 'block';
+      profileFallback.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  });
+
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
